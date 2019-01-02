@@ -4,7 +4,7 @@
   "description": "a koa study project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test/index.test.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,16 @@
   },
   "homepage": "https://github.com/ycycorona/koa-study#readme",
   "dependencies": {
+    "chai": "^4.2.0",
+    "cross-spawn": "^6.0.5",
+    "iconv-lite": "^0.4.24",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "koa-session-minimal": "^3.0.4",
+    "koa-static": "^5.0.0",
+    "mocha": "^5.2.0",
+    "mysql": "^2.16.0",
+    "supertest": "^3.3.0"
   }
 }
