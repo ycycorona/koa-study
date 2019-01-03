@@ -1,0 +1,47 @@
+server {
+    listen 80;
+    server_name sjd-marketmsgui.ql.satnew;
+    error_page 404 = /404.html;
+
+    location  / {
+        index index.html;
+        root /opt/rpminstall/h5-sjd-message-push-ui/install/h5-sjd-message-push-ui;
+    }
+
+#    location  / {
+#	proxy_set_header Host $host;
+#        #index index.html index.htm;
+#        proxy_pass http://sjd-marketmsgui.ql.corp/h5-sjd-message-push-ui/;
+#    }
+
+    location  /api/msgpush {
+	proxy_set_header Host $http_host;
+    #proxy_set_header Referer http://10.40.21.68:42295/?jsessionid=a0477b43-9be0-45ac-8791-ab15ff7000e2;
+    #proxy_set_header Origin http://10.40.21.68:42295;
+    #proxy_set_header Cookie 'sessionRedisCookie=a0477b43-9be0-45ac-8791-ab15ff7000e2; JSESSIONID=a0477b43-9be0-45ac-8791-ab15ff7000e2';
+        proxy_pass http://10.40.10.124:56565/api/msgpush;
+    }
+
+    location  /api/{
+    proxy_set_header Host $http_host;
+    #proxy_set_header Referer http://10.40.21.68:42295/?jsessionid=a0477b43-9be0-45ac-8791-ab15ff7000e2;
+    #proxy_set_header Origin http://10.40.21.68:42295;
+    proxy_set_header Cookie 'sessionRedisCookie=a0477b43-9be0-45ac-8791-ab15ff7000e2; JSESSIONID=a0477b43-9be0-45ac-8791-ab15ff7000e2';
+        proxy_pass http://10.40.10.124:56565/api/;
+    }
+}
+
+
+#server {
+#    #listen 8888;
+#    listen 8080;
+#    server_name sjd-marketmsgui.ql.corp sjd-marketmsgui.prod.ql.corp;
+
+#    error_page 404 = /404.html;
+#    location  / {
+#	proxy_set_header Host $host;
+#        #proxy_redirect http://10.139.100.69:8080:  http://$http_host/;
+#        #proxy_pass http://10.15.55.62:8888/;
+#        proxy_pass http://sjd_marketmsgui_ql_corp_8080;
+#    }
+
